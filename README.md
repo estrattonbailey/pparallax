@@ -1,50 +1,26 @@
-# svel
-Calculate velocity over an interval for scroll or resize events.
+# pparallax
+Precision parallax in **~1.6kb gzipped**. [Demo](http://estrattonbailey.com/pparallax)
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](http://standardjs.com)
 
 ## Install
 ```bash
-npm i svel --save
+npm i pparallax --save
+
+// or window.pparallax
 ```
 
 ## Usage 
-### svel(scrollY, scrollEvent[, config])
-Where `scrollY` is `window.scrollY || window.pageYOffset`, `scrollEvent` is the native event emitted by `window.onscroll`, and `config` is an optional config object. Default config: `{ pool: 10, interval: 100, reset: 50 }`.
-
-Basic example:
 ```javascript
-import svel from 'svel'
+import pparallax from 'pparallax'
 
-window.addEventListener('scroll', event => {
-  const speed = svel(window.scrollY, event, {
-    pool: 20,
-    interval: 100,
-    reset: 100
-  })
+const outer = document.getElementById('outer')
+const inner = document.getElementById('inner')
+const instance = pparallax(outer, inner)
 
-  console.log(speed > 50 ? 'fast!' : 'slow')
-})
+instance.update()
+instance.destroy()
 ```
-
-Ideally you would use a more performant solution that uses a debounce or `requestAnimationFrame`:
-```javascript
-import srraf from 'srraf'
-import svel from 'svel'
-
-srrar.scroll.use(({ curr }, event) => {
-  const speed = svel(curr, event)
-
-  console.log(speed)
-})
-```
-
-## How it works
-This library is probably overlay simplistic for some use cases. 
-
-It tracks average speed from a given number of ticks (`pool`) and over a specified time interval in milliseconds (`interval`). It returns this average at each tick, and then you can do what you want with the speed value.
-
-Given the defaults for `pool` and `interval` (10 and 100, respectively), you'll get the average speed in `pixels/100ms` over the last 10 ticks. To get `pixels/second`, you would change `config.interval` to `1000`.
 
 ## Example
 To run the example, clone this repo, then:

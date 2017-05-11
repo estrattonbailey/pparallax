@@ -1,7 +1,7 @@
 {
   "name": "pparallax",
   "version": "0.0.1",
-  "description": "",
+  "description": "Precision parallax in ~1.6kb gzipped",
   "main": "dist/index.js",
   "scripts": {
     "umd": "mkdir -p dist && browserify index.js --standalone pparallax > dist/index.umd.js",

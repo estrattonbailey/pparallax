@@ -1,5 +1,4 @@
-// import srraf from 'srraf'
-const srraf = window.srraf.default
+import srraf from 'srraf'
 
 const getPosition = (node, y) => {
   const offset = window.innerHeight
