@@ -14,8 +14,10 @@ const getPosition = (node, y) => {
   }
 }
 
-const pparallax = (outer, inner) => {
+const pparallax = (outer, inner, { offset = 0 }) => {
   if (/iP(ad|hone|od).*OS\s7.*/.test(navigator.userAgent)) return false
+
+  offset = Math.abs(offset)
 
   return srraf.use(({ currY }) => {
     const innerHeight = inner.clientHeight
@@ -27,9 +29,9 @@ const pparallax = (outer, inner) => {
 
     if (overflow) {
       const scroll = window.pageYOffset + window.innerHeight
-      const travel = scroll > node.top ? scroll - node.top : 0
+      const travel = scroll > (node.top + offset) ? scroll - (node.top + offset) : 0
       const distanceToBottom = document.documentElement.scrollHeight - node.bottom
-      const scrollableDistance = (distanceToBottom < window.innerHeight ? distanceToBottom : window.innerHeight) + node.height
+      const scrollableDistance = (distanceToBottom < window.innerHeight ? distanceToBottom : window.innerHeight) + node.height - offset
 
       const displace = (((innerHeight - node.height) / scrollableDistance) * travel).toFixed(2)
 
