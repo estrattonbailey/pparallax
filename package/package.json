@@ -1,6 +1,6 @@
 {
   "name": "pparallax",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Precision parallax in ~1.6kb gzipped",
   "main": "dist/index.js",
   "scripts": {

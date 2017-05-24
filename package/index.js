@@ -14,10 +14,10 @@ const getPosition = (node, y) => {
   }
 }
 
-const pparallax = (outer, inner, { offset = 0 }) => {
+const pparallax = (outer, inner, { offset } = { offset: 0 }) => {
   if (/iP(ad|hone|od).*OS\s7.*/.test(navigator.userAgent)) return false
 
-  offset = Math.abs(offset)
+  offset = offset < 0 ? offset * -1 : offset
 
   return srraf.use(({ currY }) => {
     const innerHeight = inner.clientHeight
