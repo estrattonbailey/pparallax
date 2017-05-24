@@ -10,13 +10,16 @@ npm i pparallax --save
 // or window.pparallax
 ```
 
-## Usage 
+## Usage
+I need to build this out. Basically, the `outer` element is the direct parent of an absolutely positioned `inner` element. `offset` must be positive, and delays the start of the parallax effect to allow users to see the top of the image.
 ```javascript
 import pparallax from 'pparallax'
 
 const outer = document.getElementById('outer')
 const inner = document.getElementById('inner')
-const instance = pparallax(outer, inner)
+const instance = pparallax(outer, inner, {
+  offset: 100 // default 0
+})
 
 instance.update()
 instance.destroy()
