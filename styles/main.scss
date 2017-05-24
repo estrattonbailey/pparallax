@@ -1,0 +1,81 @@
+@import 'lib/display';
+@import 'lib/positioning';
+@import 'lib/flexbox';
+@import 'lib/align';
+@import 'lib/floats';
+@import 'lib/z-index';
+@import 'lib/typography';
+@import 'lib/buttons';
+@import 'lib/forms';
+@import 'lib/lists';
+@import 'lib/tables';
+@import 'lib/spacing';
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+}
+
+.white {
+  color: white;
+}
+
+.relative { position: relative }
+.absolute { position: absolute }
+.fixed { position: fixed }
+.fit-t, .fit-x { top: 0 }
+.fit-b, .fit-x { bottom: 0 }
+.fit-l, .fit-x { left: 0 }
+.fit-r, .fit-x { right: 0 }
+.fill-v { height: 100vh }
+.fill-v05 { height: 50vh }
+.fill-h { width: 100% }
+
+#root {
+  overflow: hidden;
+}
+
+.image {
+  background: whitesmoke;
+  background-image: url('https://svbtleusercontent.com/nzn6xtinr2indg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &::before,
+  &::after {
+    content:'';
+    display: block;
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 0;
+    background-color: white;
+    opacity: 0.9;
+    z-index: 1;
+    height: 300%;
+  }
+  &::before {
+    transform: translateY(-100%);
+  }
+  &::after {
+    top: auto;
+    transform: translateY(100%);
+  }
+
+  &.parallax-active {
+    background: none;
+
+    img {
+      opacity: 1;
+    }
+  }
+}
+
+.overlay {
+  background: rgba(0,0,0,0.2);
+}
+
+.content {
+  max-width: 500px;
+  margin: auto;
+}
