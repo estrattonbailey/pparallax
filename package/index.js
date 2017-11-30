@@ -28,6 +28,8 @@ const pparallax = (outer, inner, { offset } = { offset: 0 }) => {
     outer.classList[overflow ? 'add' : 'remove']('pparallax')
 
     if (overflow) {
+      outer.classList.remove('is-disabled')
+
       const scroll = window.pageYOffset + window.innerHeight
       const travel = scroll > (node.top + offset) ? scroll - (node.top + offset) : 0
       const distanceToBottom = document.documentElement.scrollHeight - node.bottom
@@ -36,6 +38,8 @@ const pparallax = (outer, inner, { offset } = { offset: 0 }) => {
       const displace = (((innerHeight - node.height) / scrollableDistance) * travel).toFixed(2)
 
       inner.style.transform = `translate3d(0, -${displace}px, 0)`
+    } else {
+      outer.classList.add('is-disabled')
     }
   })
 }
